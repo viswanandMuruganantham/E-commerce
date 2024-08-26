@@ -1,0 +1,62 @@
+/* General body styling */
+body.log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4a90e2, #50a3a2);
+    color: #fff;
+}
+
+/* Login form container */
+form.logform {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    width: 300px;
+    text-align: center;
+}
+
+
+/* Label styling */
+form.logform label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Input field styling */
+form.logform input[type="text"],
+form.logform input[type="password"],
+form.logform input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Submit button styling */
+form.logform input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+form.logform input[type="submit"]:hover {
+    background-color: #50a3a2;
+}

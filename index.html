@@ -1,0 +1,223 @@
+<?php session_start(); ?>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1">
+        <title>Tech Store</title>
+        <link rel="stylesheet" href="style.css">
+        
+
+    </head>
+    <body>
+        
+        <header >
+
+            <h1>Tech Store</h1>
+            <nav>
+                <ul>
+                    <li><a href=index.html>Home</a></li>
+                    <li><a href=contact.html>contact us</a></li>
+                    <li><a href="">Shop</a></li>
+                     
+                     
+                </ul>
+                <div class="summa">
+                    <label for="search">Search:</label>
+                    <input type="search" placeholder="Search" id="search" name="search">
+                     <button id="searchButton">Search</button>
+
+                </div>
+                <p>
+                    <?php
+                    if (isset($_SESSION['username'])) {
+                        echo "Welcome, " . htmlspecialchars($_SESSION['username']) . "!";
+                    } else {
+                        echo "Welcome, Guest!";
+                    }
+                    ?>
+                </p>
+                
+               
+                <!-- Logout Button -->
+                <a href="logout.php" class="logout-button">Logout</a>
+                
+            </nav>
+           
+        </header>
+    
+        <aside>
+            <h2>shop by</h2>
+            <section>
+                <h3>catagory</h3>
+            <hr>
+            <ul>
+                <li>All items</li>
+                <li>Camera</li>
+                <li>Laptop</li>
+                <li>Phone</li>
+                <li>Others</li>
+            </ul>
+            </section>
+            
+            <section>
+                <h3>Price<span>($)</span></h3>
+                <hr>
+                <ul>
+                    <li>1 - 9</li>
+                    <li>10 - 29</li>
+                    <li>30 - 49</li>
+                    <li>50 - 69</li>
+                    <li>above 100</li>
+                </ul>
+            </section>
+            
+        </aside>
+        <!--main section of the code-->
+        <main>
+            <div>
+                <h2>All Items:</h2>
+                <div class="product">
+                    <a href="product-detials.html">
+                       <img src="images\gamer.jpg" alt="picture of game controller" height="300" width="300">
+                    </a>
+                    <h4><a href="product-detials.html">Game Controller</a></h4>
+                    <p>$23</p>
+                    <p> <del>Awesome</del><ins>Fantastic</ins> Game Controler<br>for xbox!</p>
+                    <a href="product-detials.html" class="button">more info</a>
+                    <button class="button" onclick="addToCart('Game Controller', 23)">Add to Cart</button>
+                    
+    
+                </div>
+                <div class="product">
+                   
+                    <img src="images\headphone.jpg" alt="picture of headphone" height="300" width="300">
+                
+                    <h4><a href="C:\Users\VISWA\Desktop\tech-strore\headphone-detials.html">head phone</a></h4>
+                    <p>$230</p>
+                    <p> Awesome head phone <br>for xbox!</p>
+                    <a href="C:\Users\VISWA\Desktop\tech-strore\headphone-detials.html"class="button">more info</a>
+                    <button class="button" onclick="addToCart('Headphone', 230)">Add to Cart</button>
+    
+                </div>
+                <div class="product">
+                    <img src="images\camera.jpg" alt="picture of camera" height="300" width="300">
+                    <h4><a href="product-detials.html"></a>Camera</h4>
+                    <p>$32</p>
+                    <p>awesome camera</p>
+                    <a href="C:\Users\VISWA\Desktop\tech-strore\camera-detials.html"class="button">more info</a>
+                    <button class="button" onclick="addToCart('Camera', 32)">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="images\mic.png" alt="picture of microphone" height="300" width="300">
+                    <h4><a href="C:\Users\VISWA\Desktop\tech-strore\microphone-detials.html"></a>Microphone</h4>
+                    <p>$35</p>
+                    <p>awesome <br> microphone!</p>
+                    <a href="C:\Users\VISWA\Desktop\tech-strore\microphone-detials.html"class="button">more info</a>
+                    <button class="button" onclick="addToCart('Microphone', 35)">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="images\cabel.jpg" alt="picture of cable" height="300" width="300">
+                    <h4><a href="C:\Users\VISWA\Desktop\tech-strore\cable-detial.html"></a>cable</h4>
+                    <p>$21</p>
+                    <p>awesome <br> cable!</p>
+                    <a href="C:\Users\VISWA\Desktop\tech-strore\cable-detial.html"class="button">more info</a>
+                    <button class="button" onclick="addToCart('cable', 21)">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="images\lens.webp" alt="picture of lens" height="300" width="300">
+                    <h4><a href="C:\Users\VISWA\Desktop\tech-strore\lens-detials.html"></a>lens</h4>
+                    <p>$25</p>
+                    <p>awesome <br> lens!</p>
+                    <a href="C:\Users\VISWA\Desktop\tech-strore\lens-detials.html"class="button">more info</a>
+                    <button class="button" onclick="addToCart('Lens', 25)">Add to Cart</button>
+                </div>
+                <div id="cart">
+                    <h2>Shopping Cart</h2>
+                    <ul id="cart-items">
+                        <!-- Cart items will be dynamically added here -->
+                    </ul>
+                    
+                    <a href="C:\Users\VISWA\Desktop\New folder\tech-strore\cart.html" id="view-cart-button" class="button">View Cart</a>
+                </div>
+
+
+            </div>
+        </main>
+        <script>
+            function addToCart(productName, productPrice) {
+                // Retrieve existing cart items from localStorage or initialize an empty array
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                // Add the new item to the cart
+                cartItems.push({ name: productName, price: productPrice });
+                // Store the updated cart items back to localStorage
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                // Provide feedback to the user
+                alert('Added ' + productName + ' to cart.');
+            }
+            
+        // Mapping of search terms to URLs
+            var searchMap = {
+                'headphone': "file:///C:/Users/VISWA/Desktop/home%20pro/tech-strore/head.html",
+                'gamecontrol': "file:///C:/Users/VISWA/Desktop/home%20pro/tech-strore/gamer.html",
+                'Camera': "file:///C:/Users/VISWA/Desktop/home%20pro/tech-strore/Camera.html",
+                'Microphone' : "file:///C:/Users/VISWA/Desktop/home%20pro/tech-strore/micro.html",
+                
+
+            // Add more mappings as needed
+            };
+
+            document.getElementById('searchButton').addEventListener('click', function() {
+            var query = document.getElementById('search').value.trim().toLowerCase();
+            var found = false;
+
+            // Function to normalize keywords and query by removing spaces
+            function normalizeString(str) {
+                return str.replace(/\s+/g, '').toLowerCase();
+            }
+
+            // Normalize the query
+            var normalizedQuery = normalizeString(query);
+
+            for (var keyword in searchMap) {
+                if (searchMap.hasOwnProperty(keyword)) {
+                    // Normalize the keyword
+                    var normalizedKeyword = normalizeString(keyword);
+                    
+                    // Check if the normalized query contains the normalized keyword
+                    if (normalizedQuery.includes(normalizedKeyword)) {
+                        window.location.href = searchMap[keyword];
+                        found = true;
+                        document.getElementById('search').value = '';
+                        break;
+                    }
+                }
+            }
+
+            if (!found) {
+                alert('No results found for: ' + query);
+            }
+        });
+        </script>
+        
+        <footer>
+            <nav>
+                
+                 <ul>
+                    <li><a href=index.html>Home</a></li>
+                    <li><a href=contact.html>contact us</a></li>
+                    <li><a href="">Shop</a></li>
+                </ul>
+                
+            </nav>
+            
+        </footer>
+       
+
+    </body>
+
+
+
+
+
+</html>

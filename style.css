@@ -1,0 +1,295 @@
+html {
+   background: #f7f7f7;
+}
+body {
+    font-family: Geneva, Verdana, sans-serif;
+    background: white;
+    /*max-width: 80%;*/
+    margin: 0 auto;
+    color: rgb(49, 46, 46);
+    text-align: center;
+}
+
+
+header,footer{
+    background: #333a40;
+    color: white;
+    padding: 20px 10px;
+}
+/* Navigation Styling */
+nav ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex; /* Display items inline */
+    gap: 20px; /* Space between navigation items */
+}
+
+nav ul li {
+    position: relative; /* For dropdown or hover effects */
+}
+
+nav ul li a {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Add padding for clickable area */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    border-radius: 5px; /* Rounded corners */
+    transition: border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    border-bottom: 2px solid blue; 
+}
+
+/* Add Active Class for the Current Page */
+nav ul li a.active {
+    background-color: #f90; /* Highlight active page */
+    color: #222; /* Text color for active page */
+}
+
+.summa {
+    position: absolute; /* Position the search bar absolutely */
+    top: 20px; /* Adjust as needed */
+    left: 170px; /* Place it at the leftmost corner */
+    display: flex;
+    align-items: center;
+    
+}
+
+.summa label {
+    font-size: 16px;
+    margin-right: 1px;
+    color: #333; /* Darker text color for better readability */
+}
+
+.summa input[type="search"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 200px; /* Adjust width as needed */
+}
+
+.summa button {
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.summa button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
+
+    
+
+
+.product {
+    box-sizing: border-box;
+    border: 1px solid gray;
+    /*width: 40%;*/
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+   
+    text-align: center;
+
+}
+li{
+    list-style: none;
+    line-height: 30px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+header li{
+    display: inline;
+}
+
+header h1,nav{
+    display: inline-block;
+}
+
+header h1{
+    /*width: 70%;*/
+    width: 100%;
+    
+}
+
+
+img{
+    max-width: 100%;
+}
+.button{
+    padding: 18px;
+    display: inline-block;
+}
+.button:last-of-type{
+    background: #0e69e9;
+    color: white;
+}
+p:first-of-type{
+    color: brown;
+}
+
+.product-detial{
+    width: 660px;
+     
+}
+
+.product-detial img{
+    max-width: 50%;
+    float: left;
+}
+
+form{
+    padding: 10px;
+    width: 600px;
+    margin: 10px;
+}
+form>div{
+    margin: 10px;
+}
+.inline label {
+     
+    display: inline-block;
+    width: 100px;
+}
+
+input[type="text"], input[type="email"], textarea{
+    padding: 10px;
+    width: 400px;
+}
+
+table{
+    text-align: left;
+    margin: 20px 0;
+}
+
+caption{
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 1px dotted;
+    padding: 10px;
+}
+
+th.td{
+    padding: 20px;
+}
+
+tr:hover{
+    background: #f5f5f5;
+}
+
+@media (min-width : 600px) and (max-width : 700px){
+    li{
+        color : red;
+
+    }
+   
+}
+@media(min-width:700px){
+    input[type="search"]{
+        width: 80%;
+        display: inline-block;
+    }
+    .product{
+        display: inline-block;
+        width: 48%;
+
+    }
+     
+}
+@media(min-width:1000px){
+    input[type="search"]{
+        width: 100%;
+        display: inline-block;
+        text-align: left;
+    }   
+
+    body{
+        text-align: left;
+    }
+    header h1{
+        width: 70%;
+    }
+    .product{
+        width: 40%;
+    }
+
+    /*target/context=result*/
+    /*68/1000=0.68 so convert the width from 680px to 68% so that the website fits into different screen sizes*/
+    main{
+
+        width: 68%;
+        display: inline-block;
+        padding:10px;
+    }
+    aside{
+        width: 27%;
+        display: inline-block;
+        vertical-align: top;
+        padding: 10px;
+    }
+
+
+}
+
+@media(min-width:1200px){
+    body{
+        max-width: 80%;
+    }
+
+   
+    
+
+}
+#cart{
+    display: inline;
+}
+.check label{
+    display: inline-block;
+    width: 100%;
+    padding-top: 30px;
+}
+.check input{
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+ .check [type="submit"]{
+    background-color: #0e69e9;
+    color: #e4e2e2;
+    width: 80px;
+    height: 20px;
+    text-align: center
+    ;
+ }
+ .logout-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff4b4b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #ff1a1a;
+}

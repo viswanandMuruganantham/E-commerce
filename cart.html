@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="C:\Users\VISWA\Desktop\tech-strore\style.css">
+</head>
+<body>
+    <header>
+        <h1>Your Shopping Cart</h1>
+    </header>
+    <main>
+        <div id="cart-items">
+            <!-- Cart items will be displayed here dynamically -->
+        </div>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <a href="checkout.html" class="button">Proceed to Checkout</a>
+        <a href="index.html" class="button">Continue Shopping</a>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- Script for displaying cart items -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            // Retrieve cart items from localStorage
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            let cartTotal = 0;
+            // Display cart items
+            cartItems.forEach((item, index) => {
+                const listItem = document.createElement('div');
+                listItem.textContent = `${item.name} - $${item.price}`;
+                // Create a "Remove" button for each item
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                // Add event listener to remove the item when the "Remove" button is clicked
+                removeButton.addEventListener('click', function() {
+                    // Remove the item from the cartItems array
+                    cartItems.splice(index, 1);
+                    // Update the cart items in localStorage
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                    // Remove the item from the UI
+                    cartItemsContainer.removeChild(listItem);
+                    // Recalculate the total price
+                    cartTotal -= item.price;
+                    // Update the total price in the UI
+                    cartTotalElement.textContent = cartTotal.toFixed(2);
+                });
+                // Append the "Remove" button to the item display
+                listItem.appendChild(removeButton);
+                cartItemsContainer.appendChild(listItem);
+                // Calculate the total price
+                cartTotal += item.price;
+            });
+            // Update the total price in the cart
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+        });
+    </script>
+</body>
+</html>
+           
+
